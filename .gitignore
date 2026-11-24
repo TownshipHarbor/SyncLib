@@ -1,0 +1,6 @@
+bin/
+obj/
+build/
+lemon/
+lib/
+*.pack

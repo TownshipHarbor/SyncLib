@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>disable</Nullable>
+    <AssemblyName>SyncLib</AssemblyName>
+    <RootNamespace>SyncLib</RootNamespace>
+    <DefineConstants>QUEST</DefineConstants>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <EnableDefaultItems>false</EnableDefaultItems>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <Deterministic>true</Deterministic>
+    <Optimize>true</Optimize>
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+    <NoWarn>MSB3277;CS1701;CS1702</NoWarn>
+    <LemonNet8 Condition="'$(LemonNet8)' == ''">..\lemon\net8</LemonNet8>
+    <LemonProxies Condition="'$(LemonProxies)' == ''">..\lemon\Il2CppAssemblies</LemonProxies>
+    <AssetsTools Condition="'$(AssetsTools)' == ''">..\lemon\net35\AssetsTools.NET.dll</AssetsTools>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\src\**\*.cs" />
+    <EmbeddedResource Include="$(AssetsTools)" LogicalName="SyncLib.AssetsTools.NET.dll" />
+    <Reference Include="$(LemonNet8)\MelonLoader.dll;$(LemonNet8)\0Harmony.dll;$(LemonNet8)\Il2CppInterop.Runtime.dll;$(LemonNet8)\Il2CppInterop.Common.dll" Private="false" />
+    <Reference Include="$(LemonProxies)\*.dll" Private="false" />
+    <Reference Include="$(AssetsTools)" Private="false" />
+  </ItemGroup>
+</Project>
